@@ -1,2 +1,2 @@
-# Secure-Network-lab
-Segmented virtual network lab with OPNsense firewall, hardened Linux servers, SIEM monitoring
+# Secure Network Lab
+I'm 19 and interested in a career in cybersecurity, so I'm building this lab to expand my knowledge. It's a small company network in VirtualBox, with an OPNsense firewall splitting it into clients, servers and a DMZ. I'll use Linux servers and add security monitoring. I'm applying for a Fachinformatiker für Systemintegration Ausbildung, and I'm documenting each step, including what goes wrong.
