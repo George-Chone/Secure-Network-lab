@@ -17,6 +17,5 @@
 
    ![IP-Adresse und Ping](Github/day1-ip-und-ping.png)
 
-- Über Kali per HTTPS in die OPNsense-Weboberfläche eingeloggt.
   
 ![OPNsense-Dashboard](/docs/Github/day-1-dashboard.png)
