@@ -15,4 +15,4 @@
 - Was DHCP macht
 - Warum private Adressen (10.x.x.x) in vielen Netzen gleichzeitig vorkommen können (NAT).
 
-   ![IP-Adresse und Ping](Github/day1-ip-und-ping.png.png)
+   ![IP-Adresse und Ping](Github/day1-ip-und-ping.png)
