@@ -14,3 +14,5 @@
 - Warum man ein Netz in Segmente teilt und die Firewall dazwischen setzt.
 - Was DHCP macht
 - Warum private Adressen (10.x.x.x) in vielen Netzen gleichzeitig vorkommen können (NAT).
+
+-   ![IP-Adresse und Ping](screenshots/day1-ip-und-ping.png)
