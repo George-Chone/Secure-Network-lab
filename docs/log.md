@@ -16,3 +16,7 @@
 - Warum private Adressen (10.x.x.x) in vielen Netzen gleichzeitig vorkommen können (NAT).
 
    ![IP-Adresse und Ping](Github/day1-ip-und-ping.png)
+
+- Über Kali per HTTPS in die OPNsense-Weboberfläche eingeloggt. Der Setup-Wizard hat Hostname, Domain und DNS nicht gespeichert
+  
+![OPNsense-Dashboard](/docs/Github/day-1-dashboard.png)
