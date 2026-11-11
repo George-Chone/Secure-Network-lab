@@ -15,10 +15,6 @@
 - Was DHCP macht
 - Warum private Adressen (10.x.x.x) in vielen Netzen gleichzeitig vorkommen können (NAT).
 
-   ![IP-Adresse und Ping](Github-screenshots/day1-ip-und-ping.png)
-
-
-
 
 
 ## Tag 2: Server- und DMZ-Segment, erste Firewall-Regeln (10./11. November)
@@ -26,6 +22,8 @@
 Ich habe die zwei übrigen Interfaces der Firewall konfiguriert: OPT1 als Server-Segment (10.0.20.1/24) und OPT2 als DMZ (10.0.30.1/24). Beide Adressen sind statisch, damit die Firewall für die Geräte im Segment immer unter derselben Adresse als Gateway erreichbar ist.
 
 ![Interfaces auf dem Dashboard](/docs/Github-screenshots/day-2-interface.png)
+
+Kali erhält per DHCP die Adresse 10.0.10.200 vom Clients-Segment.
 ![Hostname der Firewall](/docs/Github-screenshots/day2-hostname.png)
 
 Danach habe ich einen Ubuntu-Server (srv-linux01) installiert, aktualisiert und mit einer festen Adresse (10.0.20.10) ins Server-Segment gehängt. Die Netzwerkkonfiguration (Netplan) ist eine YAML-Datei, bei der die Einrückung entscheidet. Mit `netplan try` habe ich sie getestet, bevor ich sie übernommen habe.
