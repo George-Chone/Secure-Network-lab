@@ -24,4 +24,4 @@ Ich habe die zwei übrigen Interfaces der Firewall konfiguriert: OPT1 als Server
 Das Dashboard zeigt jetzt alle vier Interfaces mit Adresse, die Dienste laufen.
 
   
-![OPNsense-Dashboard](/docs/Github/day-1-dashboard.png)
+![OPNsense-Dashboard](/docs/Github/day-2-interface.png)
