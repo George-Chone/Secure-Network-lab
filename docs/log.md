@@ -51,5 +51,10 @@ Eine Änderung in `/etc/ssh/sshd_config` allein hätte nichts gebracht, weil `50
 
 Getestet habe ich in einer zweiten Sitzung, damit ich mich nicht aussperre. Ein Login mit Passwort wird jetzt mit `Permission denied (publickey)` abgelehnt.
 
+*Kali fragt die Firewall (10.0.10.1) nach example.com und bekommt eine Antwort.*
+
 ![DNS-Abfrage über die Firewall](/docs/Github-screenshots/day2-dns-works.png)
-![Passwort-Login wird abgelehnt](/docs/Github-screenshots/day2-ssh-password-denied.png)
+
+*Login mit Passwort wird abgelehnt (Permission denied, publickey). Nur noch der Schlüssel-Login funktioniert.*
+
+![Passwort-Login wird abgelehnt](/docs/Github-screenshots/day2-password-denied.png)
