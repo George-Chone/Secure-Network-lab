@@ -58,3 +58,17 @@ Getestet habe ich in einer zweiten Sitzung, damit ich mich nicht aussperre. Ein 
 *Login mit Passwort wird abgelehnt (Permission denied, publickey). Nur noch der Schlüssel-Login funktioniert.*
 
 ![Passwort-Login wird abgelehnt](/docs/Github-screenshots/day2-password-denied.png)
+
+Für die DMZ habe ich meinen Ubuntu-Server geklont und `dmz-web01` genannt. Beim Klonen habe ich neue MAC-Adressen erzeugen lassen, damit es keinen Konflikt gibt. Dann habe ich Hostname und Netplan angepasst (10.0.30.10/24, Gateway 10.0.30.1) und die Netzwerkkarte auf `net-dmz` gestellt.
+
+Der erste Ping zur Firewall wurde geblockt, weil ein neues Interface keine Freigaben hat. Mit einer Regel nur für ICMP Echo zur Firewall-Adresse klappt er.
+
+![Ping aus der DMZ wird erlaubt](/docs/Github-screenshots/day3-dmz-ping-allowed.png)
+
+Zum Installieren von nginx hatte die DMZ kurz Internet. Dafür habe ich drei temporäre Regeln angelegt: DNS zur Firewall, HTTP und HTTPS ins Internet. Bei den Web-Regeln habe ich das Ziel invertiert (nicht 10.0.0.0/8), damit die DMZ auch währenddessen nicht an meine internen Netze kommt. Nach der Installation habe ich alle drei wieder deaktiviert. Gelöscht habe ich sie nicht, damit ich sie für spätere Updates wieder einschalten kann.
+
+![nginx läuft auf dmz-web01](/docs/Github-screenshots/day3-nginx-running2.png)
+
+*Die Update-Regeln sind aus. Aus der DMZ gibt es keinen Weg ins Internet mehr.*
+
+![Temporäre Regeln sind aus](/docs/Github-screenshots/day3-temp-rules-off.png)
