@@ -1,4 +1,4 @@
-## Tag 1: Firewall und erstes Segment (okt)
+## Firewall und erstes Segment (okt)
 
 **Was ich gemacht habe**
 - OPNsense in einer neuen VirtualBox-VM installiert (FreeBSD 64-bit, 4 GB RAM, 2 CPUs, 16 GB Disk) mit vier Netzwerkadaptern: einmal NAT (Internet) und drei interne Netze (Clients, Server, DMZ).
@@ -17,13 +17,14 @@
 
 
 
-## Tag 2: Server- und DMZ-Segment, erste Firewall-Regeln (10./11. November)
+## 10./11. November Server- und DMZ-Segment, erste Firewall-Regeln
 
 Ich habe die zwei übrigen Interfaces der Firewall konfiguriert: OPT1 als Server-Segment (10.0.20.1/24) und OPT2 als DMZ (10.0.30.1/24). Beide Adressen sind statisch, damit die Firewall für die Geräte im Segment immer unter derselben Adresse als Gateway erreichbar ist.
 
 ![Interfaces auf dem Dashboard](/docs/Github-screenshots/day-2-interface.png)
 
 Kali erhält per DHCP die Adresse 10.0.10.200 vom Clients-Segment.
+
 ![Hostname der Firewall](/docs/Github-screenshots/day2-hostname.png)
 
 Danach habe ich einen Ubuntu-Server (srv-linux01) installiert, aktualisiert und mit einer festen Adresse (10.0.20.10) ins Server-Segment gehängt. Die Netzwerkkonfiguration (Netplan) ist eine YAML-Datei, bei der die Einrückung entscheidet. Mit `netplan try` habe ich sie getestet, bevor ich sie übernommen habe.
@@ -39,3 +40,16 @@ Danach habe ich einen Ubuntu-Server (srv-linux01) installiert, aktualisiert und 
 ![Firewall-Log: SSH-Regel greift](/docs/Github-screenshots/day2-ssh-rule-pass.png)
 
 **Bekannte Lücke:** Kali kann jetzt keine DNS-Anfragen mehr an die Firewall stellen, weil dafür noch keine Regel existiert.
+
+## 12. November
+
+**SSH-Härtung auf srv-linux01**
+
+Ich habe auf Kali ein ed25519-Schlüsselpaar erzeugt und den öffentlichen Schlüssel mit `ssh-copy-id` auf den Server kopiert. Danach habe ich Passwort-Login und Root-Login abgeschaltet, aber erst, nachdem der Schlüssel-Login funktioniert hat.
+
+Eine Änderung in `/etc/ssh/sshd_config` allein hätte nichts gebracht, weil `50-cloud-init.conf` `PasswordAuthentication yes` setzt und Vorrang hat. Deshalb habe ich `10-hardening.conf` angelegt. Die Dateien werden alphabetisch gelesen, mein Wert wird also zuerst gefunden.
+
+Getestet habe ich in einer zweiten Sitzung, damit ich mich nicht aussperre. Ein Login mit Passwort wird jetzt mit `Permission denied (publickey)` abgelehnt.
+
+![DNS-Abfrage über die Firewall](/docs/Github-screenshots/day2-dns-works.png)
+![Passwort-Login wird abgelehnt](/docs/Github-screenshots/day2-ssh-password-denied.png)
